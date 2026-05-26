@@ -1,0 +1,301 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200');
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100;200;300;400;500;600;700;800;900&display=swap'); */
+
+/* TEHEME */
+:root {
+  /* --bgl-primary: #2e5bff; */
+  /* --bgl-primary-tint: #2e5bff80; */
+  /* --bgl-primary-light: #eef6ff; */
+  /* --bgl-black: #282929; */
+  /* --bgl-black-tint: #28292980; */
+  /* --bgl-white: #fff; */
+  /* --bgl-gray: #b7b7b7; */
+  /* --bgl-gray-light: #f5f8fa; */
+  /* --bgl-gray-tint: rgba(183, 183, 183, 0.2); */
+  /* --bgl-gray-tint-dark: rgba(183, 183, 183, 0.4); */
+  /* --bgl-accent-color: var(--bgl-primary); */
+  /* --bgl-bg: #f4f6fa; */
+  /* --bgl-shadow: #4c577d26; */
+  /* --border-color: #00000020; */
+  /* --placeholder-color: #00000040; */
+  /* --label-color: #00000080; */
+  /* --dropdown-color: var(--bgl-black); */
+  /* --input-bg: #f5f8fa; */
+  /* --input-color: #000000; */
+  /* --bgl-box-bg: var(--bgl-white); */
+  /* --bgl-popup-bg: var(--bgl-white); */
+  /* --bgl-popup-text: var(--bgl-black); */
+  /* --bgl-text-color: var(--bgl-black); */
+  /* --bgl-light-text: var(--bgl-white); */
+  /* --bgl-richtext-color: var(--bgl-white); */
+  /* --bgl-code-bg: var(--bgl-black); */
+  /* --bgl-code-color: var(--bgl-white); */
+  /* --bgl-dark-bg: rgba(0, 0, 0, 0.7); */
+  /* --bgl-selection-bg: var(--bgl-blue-dark); */
+  /* --bgl-selection-color: var(--bgl-white); */
+  /* --bgl-scrollbar-thumb: var(--bgl-gray); */
+  /* --pill-btn-color: var(--bgl-white); */
+  /* --pill-btn-bg: var(--placeholder-color) */
+  /* --bgl-selected: var(--bgl-gray-light); */
+  /* --skeleton-bg: #f0f0f0; */
+  /* --skeleton-pulse: var(--bgl-bg); */
+  /* --bgl-range-thumb-color: var(--bgl-white); */
+}
+
+/* TYPE */
+:root {
+  /* --bgl-font: 'Lexend', 'Ploni', sans-serif; */
+  /* --input-font-size: 16px; */
+}
+
+/* DIMENSIONS */
+:root {
+  /* --bgl-font-size: 16px; */
+  /* --input-height: 40px; */
+  /* --label-font-size: 12px; */
+  /* --pill-font-size: 12px; */
+  /* --input-border-radius: 7px; */
+  /* --card-border-radius: 12px; */
+  /* --btn-border-radius: 10px; */
+  /* --btn-padding: 30px; */
+  /* --btn-height: 40px; */
+  /* --pill-border-radius: 8px; */
+  /* --pill-height: 20px; */
+  /* --skeleton-radius: 0.25rem; */
+  /* --skeleton-margin: 1rem; */
+  /* --bgl-range-thumb-size: 20px; */
+  /* --bgl-range-track-height: 8px; */
+  /* --bgl-scrollbar-size: 0.5rem; */
+}
+
+/* MISC */
+:root {
+  /* --bgl-transition: all 200ms ease; */
+  /* --bgl-transition-400: all 400ms ease; */
+  /* --bgl-hover-filter: brightness(90%); */
+  /* --bgl-active-filter: brightness(70%); */
+}
+
+/* OTHER COLORS */
+:root {
+  /* --bgl-blue: #2e5bff;
+    --bgl-green: #75c98f;
+    --bgl-red: #ed6c6f;
+    --bgl-yellow: #ffbb00;
+    --bgl-purple: #8a4baf;
+    --bgl-brown: #a67c52;
+    --bgl-orange: #ff8c00;
+    --bgl-turquoise: #00d8c0;
+    --bgl-pink: #f1416c; */
+}
+
+/* OTHER LIGHT COLORS */
+:root {
+  /* --bgl-blue-tint: rgba(46, 91, 255, 20%); */
+  /* --bgl-blue-dark: #191c30; */
+  /* --bgl-blue-light: #eef6ff; */
+  /* --bgl-pink-light: #fde8f0; */
+  /* --bgl-red-tint: #fbe2e2; */
+  /* --bgl-red-light: #fde8e8; */
+  /* --bgl-yellow-light: #fff6d5; */
+  /* --bgl-green-light: #e8f7f0; */
+  /* --bgl-purple-light: #f0e8f7; */
+  /* --bgl-brown-light: #f9f4f0; */
+  /* --bgl-orange-light: #ffebd9; */
+  /* --bgl-turquoise-light: #e8f9f7; */
+}
+
+/* 10% tints (lightest) */
+:root {
+  /* --bgl-blue-10: #f7f9ff; */
+  /* --bgl-green-10: #f7fcf9; */
+  /* --bgl-red-10: #fef8f8; */
+  /* --bgl-yellow-10: #fffbf0; */
+  /* --bgl-purple-10: #faf7fb; */
+  /* --bgl-brown-10: #faf8f6; */
+  /* --bgl-orange-10: #fff8f0; */
+  /* --bgl-turquoise-10: #f0fffe; */
+  /* --bgl-gray-10: #fafafa; */
+  /* --bgl-black-10: #f8f8f8; */
+  /* --bgl-pink-10: #fef7f9; */
+}
+
+/* 20% tints */
+:root {
+  /* --bgl-blue-20: #eef6ff; */
+  /* --bgl-green-20: #eef9f2; */
+  /* --bgl-red-20: #fdf1f1; */
+  /* --bgl-yellow-20: #fff7e0; */
+  /* --bgl-purple-20: #f5eff7; */
+  /* --bgl-brown-20: #f5f1ed; */
+  /* --bgl-orange-20: #fff1e0; */
+  /* --bgl-turquoise-20: #e0fffc; */
+  /* --bgl-gray-20: #f5f5f5; */
+  /* --bgl-black-20: #f0f0f0; */
+  /* --bgl-pink-20: #fceff2; */
+}
+
+/* 30% tints */
+:root {
+  /* --bgl-blue-30: #e0ebff; */
+  /* --bgl-green-30: #ddf3e5; */
+  /* --bgl-red-30: #fae5e6; */
+  /* --bgl-yellow-30: #fff0cc; */
+  /* --bgl-purple-30: #ede2f0; */
+  /* --bgl-brown-30: #ebe2db; */
+  /* --bgl-orange-30: #ffe6cc; */
+  /* --bgl-turquoise-30: #ccfff9; */
+  /* --bgl-gray-30: #ebebeb; */
+  /* --bgl-black-30: #e5e5e5; */
+  /* --bgl-pink-30: #f9e2e8; */
+}
+
+/* 40% tints */
+:root {
+  /* --bgl-blue-40: #c2d7ff; */
+  /* --bgl-green-40: #bfebcf; */
+  /* --bgl-red-40: #f4d1d2; */
+  /* --bgl-yellow-40: #ffe699; */
+  /* --bgl-purple-40: #dccbe1; */
+  /* --bgl-brown-40: #dcc9ba; */
+  /* --bgl-orange-40: #ffcc99; */
+  /* --bgl-turquoise-40: #99fff0; */
+  /* --bgl-gray-40: #d8d8d8; */
+  /* --bgl-black-40: #d2d2d2; */
+  /* --bgl-pink-40: #f4c9d4; */
+}
+
+/* 50% tints */
+:root {
+  /* --bgl-blue-50: #94adff; */
+  /* --bgl-green-50: #9ae0b7; */
+  /* --bgl-red-50: #eeb4b6; */
+  /* --bgl-yellow-50: #ffdd66; */
+  /* --bgl-purple-50: #c4a8cd; */
+  /* --bgl-brown-50: #caa68b; */
+  /* --bgl-orange-50: #ffb366; */
+  /* --bgl-turquoise-50: #66ffe0; */
+  /* --bgl-gray-50: #c4c4c4; */
+  /* --bgl-black-50: #b8b8b8; */
+  /* --bgl-pink-50: #eea4b6; */
+}
+
+/* 60% tints */
+:root {
+  /* --bgl-blue-60: #6690ff; */
+  /* --bgl-green-60: #87d4a7; */
+  /* --bgl-red-60: #e99799; */
+  /* --bgl-yellow-60: #ffd433; */
+  /* --bgl-purple-60: #b696c0; */
+  /* --bgl-brown-60: #bb9374; */
+  /* --bgl-orange-60: #ff9933; */
+  /* --bgl-turquoise-60: #33ffd0; */
+  /* --bgl-gray-60: #cecece; */
+  /* --bgl-black-60: #9e9e9e; */
+  /* --bgl-pink-60: #e88399; */
+}
+
+/* 70% tints */
+:root {
+  /* --bgl-blue-70: #527aff; */
+  /* --bgl-green-70: #7ec99f; */
+  /* --bgl-red-70: #e4898c; */
+  /* --bgl-yellow-70: #ffcc00; */
+  /* --bgl-purple-70: #a884b3; */
+  /* --bgl-brown-70: #ad805d; */
+  /* --bgl-orange-70: #ff8000; */
+  /* --bgl-turquoise-70: #00ffc0; */
+  /* --bgl-gray-70: #c0c0c0; */
+  /* --bgl-black-70: #858585; */
+  /* --bgl-pink-70: #e2627c; */
+}
+
+/* 80% tints */
+:root {
+  /* --bgl-blue-80: #3e63ff; */
+  /* --bgl-green-80: #7cbf97; */
+  /* --bgl-red-80: #e07b7f; */
+  /* --bgl-yellow-80: #ffc300; */
+  /* --bgl-purple-80: #9a72a6; */
+  /* --bgl-brown-80: #9f6d46; */
+  /* --bgl-orange-80: #ff6600; */
+  /* --bgl-turquoise-80: #00efb0; */
+  /* --bgl-gray-80: #e8ecef; */
+  /* --bgl-black-80: #6b6b6b; */
+  /* --bgl-pink-80: #dc415f; */
+}
+
+/* 90% tints */
+:root {
+  /* --bgl-blue-90: #3456ff; */
+  /* --bgl-green-90: #7ab58f; */
+  /* --bgl-red-90: #dc6d72; */
+  /* --bgl-yellow-90: #ffba00; */
+  /* --bgl-purple-90: #8c6099; */
+  /* --bgl-brown-90: #915a2f; */
+  /* --bgl-orange-90: #ff4d00; */
+  /* --bgl-turquoise-90: #00e5a0; */
+  /* --bgl-gray-90: #a4a4a4; */
+  /* --bgl-black-90: #525252; */
+  /* --bgl-pink-90: #d62042; */
+}
+
+/* Base Colors */
+:root {
+  /* --bgl-blue-100: #2e5bff; */
+  /* --bgl-green-100: #75c98f; */
+  /* --bgl-red-100: #ed6c6f; */
+  /* --bgl-yellow-100: #ffbb00; */
+  /* --bgl-purple-100: #8a4baf; */
+  /* --bgl-brown-100: #a67c52; */
+  /* --bgl-orange-100: #ff8c00; */
+  /* --bgl-turquoise-100: #00d8c0; */
+  /* --bgl-gray-100: #b7b7b7; */
+  /* --bgl-black-100: #282929; */
+  /* --bgl-pink-100: #f1416c; */
+}
+
+/* 110% shades (darker than base) */
+:root {
+  /* --bgl-blue-110: #1a42cc; */
+  /* --bgl-green-110: #5aa572; */
+  /* --bgl-red-110: #c5565a; */
+  /* --bgl-yellow-110: #cc9600; */
+  /* --bgl-purple-110: #6d3a88; */
+  /* --bgl-brown-110: #7a4f3e; */
+  /* --bgl-orange-110: #cc6f00; */
+  /* --bgl-turquoise-110: #00a699; */
+  /* --bgl-gray-110: #949494; */
+  /* --bgl-black-110: #1f2020; */
+  /* --bgl-pink-110: #bf2f55; */
+}
+
+/* 120% shades */
+:root {
+  /* --bgl-blue-120: #0f2e99; */
+  /* --bgl-green-120: #459555; */
+  /* --bgl-red-120: #ae3f43; */
+  /* --bgl-yellow-120: #997200; */
+  /* --bgl-purple-120: #4e1f61; */
+  /* --bgl-brown-120: #63442d; */
+  /* --bgl-orange-120: #995200; */
+  /* --bgl-turquoise-120: #007d72; */
+  /* --bgl-gray-120: #808080; */
+  /* --bgl-black-120: #161717; */
+  /* --bgl-pink-120: #a81e3e; */
+}
+
+/* 130% shades (darkest) */
+:root {
+  /* --bgl-blue-130: #041a66; */
+  /* --bgl-green-130: #308538; */
+  /* --bgl-red-130: #97282c; */
+  /* --bgl-yellow-130: #664e00; */
+  /* --bgl-purple-130: #2f043a; */
+  /* --bgl-brown-130: #4c391c; */
+  /* --bgl-orange-130: #663500; */
+  /* --bgl-turquoise-130: #00544b; */
+  /* --bgl-gray-130: #6c6c6c; */
+  /* --bgl-black-130: #0d0e0e; */
+  /* --bgl-pink-130: #910d27; */
+}

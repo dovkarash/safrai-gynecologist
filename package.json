@@ -1,0 +1,62 @@
+{
+  "name": "bagelink-starter",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "run-p type-check \"build-only {@}\" --",
+    "preview": "vite preview",
+    "build-only": "vite build",
+    "type-check": "vue-tsc --build --force --noEmit",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "check": "bun run type-check && bun run lint && bun run format:check",
+    "prepare": "simple-git-hooks",
+    "gen:client": "bun --bun run node_modules/.bin/bagelink ./src/api"
+  },
+  "dependencies": {
+    "pinia": "^3.0.4",
+    "vue": "^3.5.26",
+    "vue-router": "^4.6.4",
+    "@bagelink/sdk": "^1.6.75",
+    "@bagelink/vue": "^1.6.75",
+    "@bagelink/auth": "^1.6.75"
+  },
+  "devDependencies": {
+    "@bagelink/lint-config": "github:bageldb/bagel-lint-config",
+    "@sentry/vite-plugin": "^4.6.1",
+    "@types/node": "^25.0.3",
+    "@typescript-eslint/eslint-plugin": "^8.52.0",
+    "@typescript-eslint/parser": "^8.52.0",
+    "@vitejs/plugin-vue": "^6.0.3",
+    "@vitejs/plugin-vue-jsx": "^5.1.3",
+    "eslint": "^9.39.2",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-vue": "^10.6.2",
+    "globals": "^17.0.0",
+    "lint-staged": "^16.2.7",
+    "npm-run-all2": "^8.0.4",
+    "prettier": "^3.7.4",
+    "simple-git-hooks": "^2.13.1",
+    "typescript": "~5.9.3",
+    "vite": "^7.3.1",
+    "vue-eslint-parser": "^10.2.0",
+    "vue-tsc": "^3.2.2"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "bunx --bun lint-staged"
+  },
+  "lint-staged": {
+    "*.{js,mjs,cjs,ts,mts,cts,vue}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{json,md,html,css,scss}": [
+      "prettier --write"
+    ]
+  },
+  "prettier": "@bagelink/lint-config/prettier"
+}
