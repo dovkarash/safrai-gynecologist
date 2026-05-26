@@ -1,33 +1,69 @@
 <script setup lang="ts">
-import { AppContent, Btn, Card, Modal } from '@bagelink/vue'
-import { ref } from 'vue'
+import { AppContent, Btn, Card, TextInput } from '@bagelink/vue'
+import { onMounted, ref } from 'vue'
+import { useArticles } from '@/composables/useArticles'
+import { useMedia } from '@/composables/useMedia'
+import { useContact, type ContactForm } from '@/composables/useContact'
 
-const modalOpen = ref(false)
+const { articles, fetchArticles } = useArticles()
+const { media, fetchMedia } = useMedia()
+const { submitting, success, error, submitContact } = useContact()
+
+const form = ref<ContactForm>({
+  firstName: '',
+  lastName: '',
+  email: '',
+  phone: '',
+  message: '',
+})
+
+async function handleSubmit() {
+  await submitContact({ ...form.value })
+  if (success.value) {
+    form.value = { firstName: '', lastName: '', email: '', phone: '', message: '' }
+  }
+}
+
+onMounted(() => {
+  fetchArticles()
+  fetchMedia()
+})
 </script>
 
 <template>
   <AppContent title="Home">
-    <template #header-right>
-      <div class="flex gap-05 flex-wrap">
-        <Btn value="I'm a button click me" @click="modalOpen = true" />
-      </div>
-    </template>
-    <Modal v-model:visible="modalOpen" title="Do a thing ">
-      <p>I'm a modal!</p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus eligendi ad aliquam in
-        nostrum nisi saepe officia sequi, provident, repellat illo ducimus ipsum placeat dolore
-        quis? Quod ratione accusamus quaerat?
-      </p>
-      <template #footer>
-        <Btn thin flat value="Cancel" @click="modalOpen = false" />
-        <Btn thin flat value="Delete" @click="modalOpen = false" />
-        <Btn value="Save" class="ms-auto" @click="modalOpen = false" />
-      </template>
-    </Modal>
     <Card class="h-100p">
-      <p>This is the home view content area.</p>
-      <p>You can add your dashboard components or welcome messages here.</p>
+      <p v-for="article in articles" :key="article._id">{{ article.name }}</p>
+      <p v-for="m in media" :key="m._id">{{ m.name }}</p>
+    </Card>
+
+    <Card class="mt-1">
+      <p class="bold txt-20 mb-1">צור קשר</p>
+      <div class="flex gap-1 m_flex-wrap">
+        <TextInput v-model="form.firstName" label="שם פרטי" placeholder="ישראל" />
+        <TextInput v-model="form.lastName" label="שם משפחה" placeholder="ישראלי" />
+      </div>
+      <div class="flex gap-1 m_flex-wrap">
+        <TextInput
+          v-model="form.email"
+          type="email"
+          label="אימייל"
+          placeholder="israel@example.com"
+        />
+        <TextInput v-model="form.phone" type="tel" label="טלפון" placeholder="050-0000000" />
+      </div>
+      <TextInput
+        v-model="form.message"
+        multiline
+        label="הודעה"
+        placeholder="כתוב את הודעתך כאן..."
+        class="mb-1"
+      />
+      <div class="flex gap-1 align-center">
+        <Btn value="שלח" :loading="submitting" @click="handleSubmit" />
+        <p v-if="success" class="txtgreen txt-14">✓ הודעתך נשלחה בהצלחה!</p>
+        <p v-if="error" class="txtred txt-14">{{ error }}</p>
+      </div>
     </Card>
   </AppContent>
 </template>

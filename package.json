@@ -18,12 +18,13 @@
     "gen:client": "bun --bun run node_modules/.bin/bagelink ./src/api"
   },
   "dependencies": {
-    "pinia": "^3.0.4",
-    "vue": "^3.5.26",
-    "vue-router": "^4.6.4",
+    "@bagelink/auth": "^1.6.75",
     "@bagelink/sdk": "^1.6.75",
     "@bagelink/vue": "^1.6.75",
-    "@bagelink/auth": "^1.6.75"
+    "axios": "^1.16.1",
+    "pinia": "^3.0.4",
+    "vue": "^3.5.26",
+    "vue-router": "^4.6.4"
   },
   "devDependencies": {
     "@bagelink/lint-config": "github:bageldb/bagel-lint-config",

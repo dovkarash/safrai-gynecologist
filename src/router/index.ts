@@ -9,50 +9,6 @@ const router = createRouter({
       component: async () => import('@/views/Home.vue'),
     },
     {
-      path: '/sideList',
-      name: 'SideList',
-      component: async () => import('@/views/SideList.vue'),
-    },
-    {
-      path: '/fullList',
-      name: 'FullList',
-      component: async () => import('@/views/FullList.vue'),
-    },
-    {
-      path: '/settings',
-      name: 'Settings',
-      component: async () => import('@/views/Settings.vue'),
-    },
-    {
-      path: '/table',
-      name: 'Table',
-      component: async () => import('@/views/Table.vue'),
-    },
-    {
-      path: '/signup',
-      name: 'Signup',
-      component: async () => import('@/views/auth/Signup.vue'),
-      meta: { hideMenu: true },
-    },
-    {
-      path: '/login',
-      name: 'Login',
-      component: async () => import('@/views/auth/Login.vue'),
-      meta: { hideMenu: true },
-    },
-    {
-      path: '/forgot-password',
-      name: 'ForgotPassword',
-      component: async () => import('@/views/auth/ForgotPassword.vue'),
-      meta: { hideMenu: true },
-    },
-    {
-      path: '/resetPassword',
-      name: 'ResetPassword',
-      component: async () => import('@/views/auth/ResetPassword.vue'),
-      meta: { hideMenu: true },
-    },
-    {
       // Always last route
       path: '/:catchAll(.*)*',
       name: '404',
