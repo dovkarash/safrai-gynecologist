@@ -1,9 +1,10 @@
 <script setup lang="ts">
-import { AppContent, Btn, Card, TextInput } from '@bagelink/vue'
+import { Btn, Card, TextInput } from '@bagelink/vue'
 import { onMounted, ref } from 'vue'
 import { useArticles } from '@/composables/useArticles'
 import { useMedia } from '@/composables/useMedia'
 import { useContact, type ContactForm } from '@/composables/useContact'
+import Topnav from '@/components/Topnav.vue'
 
 const { articles, fetchArticles } = useArticles()
 const { media, fetchMedia } = useMedia()
@@ -31,11 +32,10 @@ onMounted(() => {
 </script>
 
 <template>
-  <AppContent title="Home">
-    <Card class="h-100p">
-      <p v-for="article in articles" :key="article._id">{{ article.name }}</p>
-      <p v-for="m in media" :key="m._id">{{ m.name }}</p>
-    </Card>
+  <div>
+    <Topnav />
+    <p v-for="article in articles" :key="article._id">{{ article.name }}</p>
+    <p v-for="m in media" :key="m._id">{{ m.name }} <img :src="m.image.imageURL" alt="" /></p>
 
     <Card class="mt-1">
       <p class="bold txt-20 mb-1">צור קשר</p>
@@ -65,5 +65,5 @@ onMounted(() => {
         <p v-if="error" class="txtred txt-14">{{ error }}</p>
       </div>
     </Card>
-  </AppContent>
+  </div>
 </template>

@@ -75,7 +75,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div class="txt-center color-white flex justify-content-center flex-column gap-1 h-100vh pb-5">
+  <div class="txt-center flex justify-content-center flex-column gap-1 h-100vh pb-5">
     <div
       ref="compassRef"
       class="relative grid shadow-txt user-select-none aspect-ratio-1 idle min-w250px"
@@ -105,9 +105,9 @@ onUnmounted(() => {
     </div>
 
     <p class="txt120 bold line-height-1">404</p>
-    <p class="txt30">Page not found.</p>
-    <p class="txt16 light">Let’s get you back on track.</p>
-    <Btn class="border border-gray" href="/">Back to Home</Btn>
+    <p class="txt30">הדף לא נמצא.</p>
+    <p class="txt16 light">בואו נחזיר אתכם למסלול.</p>
+    <Btn class="border border-gray" href="/">חזרה לעמוד הבית</Btn>
   </div>
 </template>
 

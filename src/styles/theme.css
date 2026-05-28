@@ -1,8 +1,16 @@
 /* @import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200');
 @import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100;200;300;400;500;600;700;800;900&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Assistant:wght@200..800&display=swap');
 
 /* TEHEME */
 :root {
+  --bgl-primary: #6e817a;
+  --bgl-green-100: #38494e;
+  --bgl-brown-100: #846168;
+  --bgl-black: #333333;
+  --bgl-black-tint: #33333380;
+  --bgl-bg: #f5f5f5;
+  --bgl-orange: #eec2a0;
   /* --bgl-primary: #2e5bff; */
   /* --bgl-primary-tint: #2e5bff80; */
   /* --bgl-primary-light: #eef6ff; */
@@ -44,21 +52,21 @@
 
 /* TYPE */
 :root {
-  /* --bgl-font: 'Lexend', 'Ploni', sans-serif; */
-  /* --input-font-size: 16px; */
+  --bgl-font: 'Assistant', sans-serif;
+  --input-font-size: 16px;
 }
 
 /* DIMENSIONS */
 :root {
   /* --bgl-font-size: 16px; */
-  /* --input-height: 40px; */
+  --input-height: 45px;
   /* --label-font-size: 12px; */
   /* --pill-font-size: 12px; */
-  /* --input-border-radius: 7px; */
-  /* --card-border-radius: 12px; */
-  /* --btn-border-radius: 10px; */
+  --input-border-radius: 12px;
+  --card-border-radius: 12px;
+  --btn-border-radius: 24px;
   /* --btn-padding: 30px; */
-  /* --btn-height: 40px; */
+  --btn-height: 45px;
   /* --pill-border-radius: 8px; */
   /* --pill-height: 20px; */
   /* --skeleton-radius: 0.25rem; */
