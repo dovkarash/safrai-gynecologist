@@ -97,12 +97,12 @@ onMounted(() => {
     </section>
 
     <!-- ======= SERVICES ======= -->
-    <section id="services" class="bg-white">
-      <div class="grid grid-wrap-6 txt-center w-1170px gap-1">
+    <section id="services" class="bg-white py-3 m_pt-0 m_pb-1">
+      <div class="grid grid-wrap-200 m_grid-wrap-150 m_gap-05 txt-center w-1170px gap-1 m_px-1">
         <div
           v-for="service in services"
           :key="service._id"
-          class="bg-white radius-1 p-1 hover"
+          class="bg-white radius-1 p-1 hover m_p-05"
           @click="selectedService = service"
         >
           <div
@@ -123,18 +123,19 @@ onMounted(() => {
         <Modal
           :visible="!!selectedService"
           :title="selectedService?.name"
-          close-placement="header-end"
           @update:visible="selectedService = null"
         >
-          <div v-if="selectedService">
+          <div v-if="selectedService" class="flex gap-1 align-items-start m_block m_txt-center">
             <img
               v-if="selectedService.image?.imageURL"
               :src="selectedService.image.imageURL"
               :alt="selectedService.image.altText || selectedService.name"
-              class="w-100p radius-1 mb-1-5"
-              style="max-height: 260px; object-fit: cover"
+              class="w-100px radius-1 mb-1-5 m_w-200px"
             />
-            <div class="txt-16 line-height-17 service-body" v-html="selectedService.body"></div>
+            <div
+              class="txt-16 line-height-17 service-body txt-start"
+              v-html="selectedService.body"
+            ></div>
           </div>
         </Modal>
       </div>
@@ -290,5 +291,8 @@ onMounted(() => {
 <style>
 .bg-grad-white {
   background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 100%);
+}
+.bg-dark {
+  overflow: auto !important;
 }
 </style>
