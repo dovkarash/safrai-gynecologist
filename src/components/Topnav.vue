@@ -13,6 +13,17 @@ const navLinks = [
   { label: 'מאמרים רפואיים', href: '#articles' },
   { label: 'צור קשר', href: '#contact' },
 ]
+
+const SCROLL_OFFSET = 80 // px מתחת לנאב
+
+function scrollTo(href: string) {
+  const id = href.replace('#', '')
+  const el = document.getElementById(id)
+  if (!el) return
+  const top = el.getBoundingClientRect().top + window.scrollY - SCROLL_OFFSET
+  window.scrollTo({ top, behavior: 'smooth' })
+  openMobileMenu.value = false
+}
 </script>
 
 <template>
@@ -32,13 +43,13 @@ const navLinks = [
         @click="openMobileMenu = true"
       />
       <!-- Logo / name -->
-      <div class="txt-start flex gap-1 m_gap-05 m_me-auto">
+      <router-link to="/" class="txt-start flex gap-1 m_gap-05 m_me-auto decoration-none">
         <img src="@/assets/logo.svg" alt="ד״ר מרים ספראי" class="w-50px m_w-40px" />
         <div>
           <p class="bold txt-16 line-height-1">ד״ר מרים ספראי</p>
           <p class="txt-12">גינקולוגיה ופוריות</p>
         </div>
-      </div>
+      </router-link>
 
       <!-- menu overlay -->
       <div
@@ -62,7 +73,7 @@ const navLinks = [
             :key="link.href"
             :href="link.href"
             class="decoration-none m_color-white"
-            @click="openMobileMenu = false"
+            @click.prevent="scrollTo(link.href)"
             >{{ link.label }}</a
           >
         </div>

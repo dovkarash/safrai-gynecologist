@@ -88,7 +88,7 @@ onMounted(() => {
           ></div>
         </div>
       </div>
-      <div class="absolute inset-0 w-100p h-100p bg-grad-white z-1"></div>
+      <div class="absolute start end bottom w-100p h-200px bg-grad-white z-1"></div>
       <img
         src="@/assets/hero-bg.jpg"
         alt=""
