@@ -221,7 +221,7 @@ onMounted(() => {
     </section>
 
     <!-- ======= MEDIA ======= -->
-    <section id="media" class="py-4 px-05 bg-bg">
+    <section id="media" class="py-4 m_py-1 px-05 bg-bg">
       <div class="w-1170px">
         <h3 class="txt-30 regular m-0 pb-1">בתקשורת</h3>
         <div class="grid grid-wrap-4 gap-1 m_grid-wrap-1">
@@ -267,7 +267,7 @@ onMounted(() => {
     </section>
 
     <!-- ======= ARTICLES ======= -->
-    <section id="articles" class="py-4 px-05 bg-bg">
+    <section id="articles" class="py-4 m_py-1 px-05 bg-bg">
       <div class="w-1170px">
         <h3 class="txt-30 regular m-0 pb-1">מאמרים רפואיים</h3>
         <div class="grid grid-wrap-6 gap-1 m_grid-wrap-2">
@@ -292,7 +292,7 @@ onMounted(() => {
     </section>
 
     <!-- ======= CONTACT ======= -->
-    <section id="contact" class="mt-3 px-05 bg-green-100 color-white m_py-1">
+    <section id="contact" class="mt-5 m_mt-1 px-05 bg-green-100 color-white m_py-1">
       <div class="w-1170px grid grid-wrap-2 gap-3 m_gap-1 align-items-start m_grid-wrap-1">
         <div class="py-3 m_py-1">
           <p class="txt-14 color-orange">נשמח לשמוע ממך</p>
