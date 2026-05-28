@@ -62,13 +62,25 @@ export class Bagel {
   // perPage
 
   async get() {
-    let url = `/${this._collection}/items`
-    if (this._item) url += `/${this._item}`
+    // Snapshot current state and reset immediately so parallel calls don't interfere
+    const collection = this._collection
+    const item = this._item
+    const everything = this._everything
+    const perPage = this._perPage
+    const query = this._query
+    this._collection = ''
+    this._item = ''
+    this._everything = false
+    this._perPage = Number.NaN
+    this._query = []
+
+    let url = `/${collection}/items`
+    if (item) url += `/${item}`
     const queryParams = []
-    if (this._everything) queryParams.push('everything=true')
-    if (!Number.isNaN(this._perPage)) queryParams.push(`perPage=${this._perPage}`)
-    if (this._query.length) {
-      const q = this._query.map((q) => `${q.slug}:${q.comparator}:${q.value}`).join('%2B')
+    if (everything) queryParams.push('everything=true')
+    if (!Number.isNaN(perPage)) queryParams.push(`perPage=${perPage}`)
+    if (query.length) {
+      const q = query.map((q) => `${q.slug}:${q.comparator}:${q.value}`).join('%2B')
       queryParams.push(`query=${q}`)
     }
     if (queryParams.length) url += `?${queryParams.join('&')}`

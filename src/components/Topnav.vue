@@ -17,7 +17,7 @@ const navLinks = [
 
 <template>
   <div
-    class="p-1 w-100 sticky z-99 m_p-05"
+    class="p-1 w-100 sticky z-99 m_p-05 shadow-10"
     style="backdrop-filter: blur(10px); background: rgba(255, 255, 255, 0.92) !important"
   >
     <div class="w-1170px gap-075 align-items-center space-between transition flex">
@@ -28,11 +28,11 @@ const navLinks = [
         icon="menu"
         round
         flat
-        color="brown-100"
+        color="orange-100"
         @click="openMobileMenu = true"
       />
       <!-- Logo / name -->
-      <div class="color-brown-100 txt-start flex gap-1 m_gap-05 m_me-auto">
+      <div class="txt-start flex gap-1 m_gap-05 m_me-auto">
         <img src="@/assets/logo.svg" alt="ד״ר מרים ספראי" class="w-50px m_w-40px" />
         <div>
           <p class="bold txt-16 line-height-1">ד״ר מרים ספראי</p>
@@ -69,7 +69,7 @@ const navLinks = [
       </div>
 
       <!-- CTA button -->
-      <Btn class="m_px-1" value="קביעת תור" @click="openBooking" />
+      <Btn class="m_px-1 bg-orange color-black" value="קביעת תור" @click="openBooking" />
     </div>
   </div>
 </template>
