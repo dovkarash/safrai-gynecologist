@@ -11,6 +11,11 @@
   --bgl-black-tint: #33333380;
   --bgl-bg: #f5f5f5;
   --bgl-orange: #eec2a0;
+  --input-bg: #ffffff30;
+  --input-color: #ffffff;
+  --label-color: #ffffff90;
+  --placeholder-color: #ffffff80;
+
   /* --bgl-primary: #2e5bff; */
   /* --bgl-primary-tint: #2e5bff80; */
   /* --bgl-primary-light: #eef6ff; */

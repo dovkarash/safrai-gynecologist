@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Btn, Card, Modal, TextInput } from '@bagelink/vue'
+import { Btn, Card, EmailInput, Icon, MapEmbed, Modal, TelInput, TextInput } from '@bagelink/vue'
 import { computed, onMounted, ref } from 'vue'
 import { useArticles } from '@/composables/useArticles'
 import { useMedia } from '@/composables/useMedia'
@@ -41,6 +41,21 @@ const timeline = [
     text: 'רופאה בכירה ביחידת ה-IVF במרכז הרפואי ולפסון, אחראית על שימור פוריות רפואי ואונקופוריות.',
   },
 ]
+
+const clinicAddress = 'רח׳ הדוגמה 12, תל אביב'
+// עדכנו lat/lng לפי המיקום האמיתי (Google Maps → לחיצה ימנית על המקום)
+const clinicLocation = { lat: 32.0853, lng: 34.7818 }
+
+const mapCenter = computed<[number, number]>(() => [clinicLocation.lat, clinicLocation.lng])
+
+const mapMarkers = computed(() => [
+  { lat: clinicLocation.lat, lng: clinicLocation.lng, tooltip: clinicAddress },
+])
+
+const mapLinkUrl = computed(
+  () =>
+    `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${clinicAddress}, ישראל`)}`,
+)
 
 const form = ref<ContactForm>({
   firstName: '',
@@ -110,7 +125,7 @@ onMounted(() => {
             class="w-70p h-70p absolute top-3 -end-2-5 m_-end-1"
           />
           <div
-            class="absolute -bottom-1 -start-2 min-w-200px m_min-w-100px aspect-ratio-1 bg-primary z-1 radius-2-5 m_radius-1-5 m_-start-1"
+            class="absolute -bottom-1 -start-2 min-w-200px m_min-w-100px aspect-ratio-1 bg-primary z-1 radius-2 m_radius-1-5 m_-start-1"
           ></div>
         </div>
       </div>
@@ -208,46 +223,42 @@ onMounted(() => {
     <!-- ======= MEDIA ======= -->
     <section id="media" class="py-4 px-05 bg-bg">
       <div class="w-1170px">
-        <h3 class="txt-36 semi m-0 mb-3 m_txt-28 txt-end">בתקשורת</h3>
-        <div class="grid grid-wrap-4 gap-1 m_grid-wrap-2">
-          <a
+        <h3 class="txt-30 regular m-0 pb-1">בתקשורת</h3>
+        <div class="grid grid-wrap-4 gap-1 m_grid-wrap-1">
+          <Card
             v-for="item in visibleMedia"
             :key="item._id"
             :href="item.link || '#'"
             target="_blank"
             rel="noopener noreferrer"
-            class="decoration-none"
+            class="p-0 overflow-hidden hover decoration-none border bg-white"
           >
-            <Card class="p-0 overflow-hidden h-100p flex column">
-              <!-- Main image -->
-              <div class="relative overflow-hidden" style="height: 160px">
-                <img
-                  v-if="item.image?.imageURL"
-                  :src="item.image.imageURL"
-                  :alt="item.image.altText || item.name"
-                  class="w-100p h-100p cover"
-                />
-                <div v-else class="w-100p h-100p bg-bg flex align-center justify-content-center">
-                  <span class="txt-40">📰</span>
-                </div>
+            <!-- Main image -->
+            <div class="relative border-bottom h-150px">
+              <img
+                v-if="item.image?.imageURL"
+                :src="item.image.imageURL"
+                :alt="item.image.altText || item.name"
+                class="w-100p h-100p cover"
+              />
+              <div v-else class="w-100p h-100p bg-bg flex align-center justify-content-center">
+                <img src="@/assets/logo.svg" alt="" class="h-100px grayscale opacity-3" />
               </div>
-              <!-- Logo + content -->
-              <div class="p-1 flex column gap-05 flex-1">
-                <img
-                  v-if="item.logo?.imageURL"
-                  :src="item.logo.imageURL"
-                  :alt="item.name"
-                  class="h-30px"
-                  style="object-fit: contain; object-position: right"
-                />
-                <p v-else class="bold txt-14 m-0">{{ item.name }}</p>
-                <p class="txt-13 color-black-tint line-height-15 flex-1 m-0">{{ item.name }}</p>
-                <p v-if="item.date || item._createdDate" class="txt-12 color-black-tint m-0">
-                  {{ formatDate(item.date || item._createdDate) }}
-                </p>
-              </div>
-            </Card>
-          </a>
+            </div>
+            <!-- Logo + content -->
+            <div class="p-1 display-flex column gap-05 align-items-start">
+              <img
+                v-if="item.logo?.imageURL"
+                :src="item.logo.imageURL"
+                :alt="item.name"
+                class="h-30px contain"
+              />
+              <p class="ellipsis-3">{{ item.name }}</p>
+              <p v-if="item.date || item._createdDate" class="txt-12 opacity-5 mt-auto">
+                {{ formatDate(item.date || item._createdDate) }}
+              </p>
+            </div>
+          </Card>
         </div>
         <div v-if="media.length > mediaLimit" class="flex justify-content-center mt-2">
           <Btn class="bg-orange color-black" value="הצגת עוד" @click="mediaLimit += 8" />
@@ -258,23 +269,21 @@ onMounted(() => {
     <!-- ======= ARTICLES ======= -->
     <section id="articles" class="py-4 px-05 bg-bg">
       <div class="w-1170px">
-        <h2 class="txt-36 semi m-0 mb-3 m_txt-28 txt-end">מאמרים רפואיים</h2>
+        <h3 class="txt-30 regular m-0 pb-1">מאמרים רפואיים</h3>
         <div class="grid grid-wrap-6 gap-1 m_grid-wrap-2">
-          <a
+          <Card
             v-for="article in visibleArticles"
             :key="article._id"
             :href="article.link || '#'"
             target="_blank"
             rel="noopener noreferrer"
-            class="decoration-none"
+            class="h-100p display-flex column gap-05 p-1 hover decoration-none border bg-white h-150px"
           >
-            <Card class="h-100p flex column gap-05 p-1">
-              <p v-if="article.date || article._createdDate" class="txt-12 color-black-tint m-0">
-                {{ formatDate(article.date || article._createdDate) }}
-              </p>
-              <p class="txt-14 bold color-black line-height-15 flex-1 m-0">{{ article.name }}</p>
-            </Card>
-          </a>
+            <p v-if="article.date || article._createdDate" class="txt-12 opacity-5">
+              {{ formatDate(article.date || article._createdDate) }}
+            </p>
+            <p class="ellipsis-4">{{ article.name }}</p>
+          </Card>
         </div>
         <div v-if="articles.length > articlesLimit" class="flex justify-content-center mt-2">
           <Btn class="bg-orange color-black" value="הצגת עוד" @click="articlesLimit += 12" />
@@ -283,87 +292,96 @@ onMounted(() => {
     </section>
 
     <!-- ======= CONTACT ======= -->
-    <section id="contact" class="py-4 px-05 bg-bg">
-      <div class="w-1170px grid grid-wrap-2 gap-3 align-items-start m_grid-wrap-1">
-        <div>
-          <p class="color-green-100 txt-14 mb-05">נשמח לשמוע ממך</p>
-          <h2 class="txt-36 semi m-0 mb-1 m_txt-28">צור קשר</h2>
-          <p class="txt-16 color-black-tint line-height-16 mb-2">
-            רוצה לקבוע ייעוץ או פשוט לשאול שאלה? מלאי את הפרטים ונחזור אליך בהקדם.
+    <section id="contact" class="mt-3 px-05 bg-green-100 color-white m_py-1">
+      <div class="w-1170px grid grid-wrap-2 gap-3 m_gap-1 align-items-start m_grid-wrap-1">
+        <div class="py-3 m_py-1">
+          <p class="txt-14 color-orange">נשמח לשמוע ממך</p>
+          <h2 class="txt-30 regular m-0 mb-1">צור קשר</h2>
+          <p class="txt-16 pb-1">
+            אפשר להשאיר פרטים ונחזור אלייך בהקדם, או ליצור קשר ישירות עם המרפאה.
+            <br />
+            טלפון: 03-0000000 | שעות פעילות: א׳–ה׳ 09:00–17:00 | כתובת:
+            <a :href="mapLinkUrl" target="_blank" rel="noopener noreferrer" class="color-white">{{
+              clinicAddress
+            }}</a>
           </p>
-          <div class="flex column gap-075">
-            <div class="flex align-center gap-075">
-              <span
-                class="contact-icon bg-orange radius-full flex-shrink-0 flex align-center justify-content-center"
-                >📍</span
+          <Btn
+            v-tooltip="'פייסבוק'"
+            icon="facebook"
+            href="https://www.facebook.com/profile.php?id=100063543434343"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="rotate-0 color-white"
+            flat
+            icon-size="2.5"
+            size="l"
+          />
+          <Btn
+            v-tooltip="'אימסטגרם'"
+            icon="instagram"
+            href="https://www.instagram.com/profile.php?id=100063543434343"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="rotate-0 color-white"
+            flat
+            icon-size="2.5"
+            size="l"
+          />
+          <div>
+            <form v-if="!success" class="grid grid-wrap-2 gap-col-1" @submit.prevent="handleSubmit">
+              <TextInput v-model="form.firstName" label="שם פרטי" placeholder="ישראל" required />
+              <TextInput v-model="form.lastName" label="שם משפחה" placeholder="ישראלי" required />
+              <EmailInput
+                v-model="form.email"
+                type="email"
+                label="אימייל"
+                placeholder="israel@example.com"
+                required
+              />
+              <TelInput
+                v-model="form.phone"
+                type="tel"
+                label="טלפון"
+                placeholder="050-0000000"
+                required
+              />
+              <TextInput
+                v-model="form.message"
+                multiline
+                label="הודעה"
+                placeholder="כתבו את הודעתכם כאן..."
+                class="grid-span-2 m_grid-span-1"
+              />
+              <div class="flex justify-content-end grid-span-2 m_grid-span-1">
+                <Btn
+                  type="submit"
+                  class="bg-orange color-black"
+                  value="שליחת הודעה"
+                  full-width-mobile
+                  :loading="submitting"
+                />
+              </div>
+            </form>
+            <div class="flex gap-1">
+              <div v-if="success" class="flex gap-1 column w-100p py-3">
+                <Icon name="check" class="color-green line-height-1" size="3" />
+                <p class="color-black">הודעתך נשלחה בהצלחה!</p>
+              </div>
+              <p
+                v-if="error"
+                class="color-red txt-14 bg-red-30 w-100p p-025 txt-center mt-1 radius-025"
               >
-              <p class="txt-14">כתובת המרפאה</p>
-            </div>
-            <div class="flex align-center gap-075">
-              <span
-                class="contact-icon bg-orange radius-full flex-shrink-0 flex align-center justify-content-center"
-                >📞</span
-              >
-              <p class="txt-14">מספר טלפון</p>
-            </div>
-            <div class="flex align-center gap-075">
-              <span
-                class="contact-icon bg-orange radius-full flex-shrink-0 flex align-center justify-content-center"
-                >✉️</span
-              >
-              <p class="txt-14">כתובת אימייל</p>
+                {{ error }}
+              </p>
             </div>
           </div>
         </div>
-        <Card>
-          <div class="flex gap-1 m_flex-wrap mb-05">
-            <TextInput
-              v-model="form.firstName"
-              label="שם פרטי"
-              placeholder="ישראל"
-              class="flex-1"
-            />
-            <TextInput
-              v-model="form.lastName"
-              label="שם משפחה"
-              placeholder="ישראלי"
-              class="flex-1"
-            />
-          </div>
-          <div class="flex gap-1 m_flex-wrap mb-05">
-            <TextInput
-              v-model="form.email"
-              type="email"
-              label="אימייל"
-              placeholder="israel@example.com"
-              class="flex-1"
-            />
-            <TextInput
-              v-model="form.phone"
-              type="tel"
-              label="טלפון"
-              placeholder="050-0000000"
-              class="flex-1"
-            />
-          </div>
-          <TextInput
-            v-model="form.message"
-            multiline
-            label="הודעה"
-            placeholder="כתוב את הודעתך כאן..."
-            class="mb-1"
-          />
-          <div class="flex gap-1 align-center">
-            <Btn
-              class="bg-orange color-black"
-              value="שלח הודעה"
-              :loading="submitting"
-              @click="handleSubmit"
-            />
-            <p v-if="success" class="color-green txt-14">✓ הודעתך נשלחה בהצלחה!</p>
-            <p v-if="error" class="color-red txt-14">{{ error }}</p>
-          </div>
-        </Card>
+        <div class="contact-map -mt-3 shadow-30 m_mt-0">
+          <MapEmbed :center="mapCenter" :markers="mapMarkers" :zoom="16" :height="640" />
+        </div>
+      </div>
+      <div class="px-075 py-025 flex justify-content-end">
+        <p class="txt8 opacity-5">Dov Karash</p>
       </div>
     </section>
   </div>
@@ -375,5 +393,19 @@ onMounted(() => {
 }
 .bg-dark {
   overflow: auto !important;
+}
+.grayscale {
+  filter: grayscale(1);
+}
+
+.contact-map {
+  width: 100%;
+  overflow: hidden;
+}
+@media (max-width: 910px) {
+  .contact-map {
+    height: 500px;
+    border-radius: var(--btn-border-radius);
+  }
 }
 </style>
