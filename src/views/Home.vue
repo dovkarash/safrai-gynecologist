@@ -4,11 +4,13 @@ import { onMounted, ref } from 'vue'
 import { useArticles } from '@/composables/useArticles'
 import { useMedia } from '@/composables/useMedia'
 import { useContact, type ContactForm } from '@/composables/useContact'
+import { useBooking } from '@/composables/useBooking'
 import Topnav from '@/components/Topnav.vue'
 
 const { articles, fetchArticles } = useArticles()
 const { media, fetchMedia } = useMedia()
 const { submitting, success, error, submitContact } = useContact()
+const { openBooking } = useBooking()
 
 const form = ref<ContactForm>({
   firstName: '',
@@ -34,6 +36,9 @@ onMounted(() => {
 <template>
   <div>
     <Topnav />
+    <!-- כפתור קביעת תור ב-Hero — ישמש לאחר בניית הדף המלא -->
+    <Btn value="קביעת תור" @click="openBooking" />
+
     <p v-for="article in articles" :key="article._id">{{ article.name }}</p>
     <p v-for="m in media" :key="m._id">{{ m.name }} <img :src="m.image.imageURL" alt="" /></p>
 

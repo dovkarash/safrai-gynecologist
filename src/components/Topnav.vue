@@ -1,8 +1,10 @@
 <script lang="ts" setup>
 import { Btn } from '@bagelink/vue'
 import { ref } from 'vue'
+import { useBooking } from '@/composables/useBooking'
 
 const openMobileMenu = ref(false)
+const { openBooking } = useBooking()
 
 const navLinks = [
   { label: 'שירותי המרפאה', href: '#services' },
@@ -26,6 +28,7 @@ const navLinks = [
         icon="menu"
         round
         flat
+        color="brown-100"
         @click="openMobileMenu = true"
       />
       <!-- Logo / name -->
@@ -66,11 +69,7 @@ const navLinks = [
       </div>
 
       <!-- CTA button -->
-      <Btn
-        class="m_px-1"
-        value="קביעת תור"
-        @click="document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' })"
-      />
+      <Btn class="m_px-1" value="קביעת תור" @click="openBooking" />
     </div>
   </div>
 </template>

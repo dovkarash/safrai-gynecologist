@@ -105,8 +105,8 @@ export function useServices() {
     try {
       const res = await bagel.collection('Services').everything().get()
       services.value = res.data
-    } catch (e: any) {
-      error.value = e?.message ?? 'Failed to fetch services'
+    } catch (e: unknown) {
+      error.value = (e as Error)?.message ?? 'Failed to fetch services'
     } finally {
       loading.value = false
     }
