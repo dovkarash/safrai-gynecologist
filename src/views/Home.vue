@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Btn, Card, Modal, TextInput } from '@bagelink/vue'
-import { onMounted, ref } from 'vue'
+import { computed, onMounted, ref } from 'vue'
 import { useArticles } from '@/composables/useArticles'
 import { useMedia } from '@/composables/useMedia'
 import { useContact, type ContactForm } from '@/composables/useContact'
@@ -15,6 +15,32 @@ const { submitting, success, error, submitContact } = useContact()
 const { openBooking } = useBooking()
 
 const selectedService = ref<Service | null>(null)
+
+const mediaLimit = ref(8)
+const articlesLimit = ref(12)
+const visibleMedia = computed(() => media.value.slice(0, mediaLimit.value))
+const visibleArticles = computed(() => articles.value.slice(0, articlesLimit.value))
+
+const timeline = [
+  {
+    years: '2003–2005',
+    text: 'תואר ראשון בביולוגיה, האוניברסיטה העברית בירושלים — סיום בהצטיינות.',
+  },
+  { years: '2005–2012', text: 'בוגרת בית הספר לרפואה של האוניברסיטה העברית והדסה, ירושלים.' },
+  { years: '2015–2021', text: 'התמחות במיילדות וגינקולוגיה במרכז הרפואי הדסה.' },
+  {
+    years: '2022–2024',
+    text: 'פוסט־דוקטורט ב־MWRI פיטסבורג, ארה״ב, בתחום שימור פוריות בילדים, ילדות ונשים.',
+  },
+  {
+    years: '2024–2025',
+    text: 'השתלמות עמיתים בתחום הפריון ו-IVF ושימור פוריות במרכז הרפואי שיבא.',
+  },
+  {
+    years: 'החל משנת 2025',
+    text: 'רופאה בכירה ביחידת ה-IVF במרכז הרפואי ולפסון, אחראית על שימור פוריות רפואי ואונקופוריות.',
+  },
+]
 
 const form = ref<ContactForm>({
   firstName: '',
@@ -141,62 +167,117 @@ onMounted(() => {
       </div>
     </section>
 
+    <!-- ======= ABOUT ======= -->
+    <section id="about" class="relative py-3 m_pt-0 m_pb-1">
+      <Card
+        class="w-1170px bg-orange-100 display-flex gap-2 color-white radius-2 m_block m_radius-1"
+      >
+        <div class="">
+          <p class="color-orange">נעים להכיר</p>
+          <h2 class="txt-30 regular mt-05 mb-1 line-height-13">
+            רופאת נשים שמחברת מקצועיות, רגישות ובהירות
+          </h2>
+          <p>
+            ד״ר מרים ספראי היא רופאת נשים מומחית בתחום הפריון, שימור פוריות, IVF, טיפולי ART ומניל
+            המעבר. תחום ייחודי בעבודתה הוא ליווי גינקולוגי ופוריותי של נשים עם רקע אונקולוגי — משלב
+            האבחנה ושימור הפוריות, דרך מעבר גינקולוגי בתקופת הטיפולים, ועד מעקב לאחור החלמה וכניון
+            הריון.
+          </p>
+          <p>
+            בנוסף, ד״ר ספראי מבצעת מעקבים במצבים ייחודיים, כגון רזרבה שחלתית נמוכה, תסמונת טרנר,
+            נשאות X שביר ומעבר מוקדם. לצד עבודתה הקלינית, היא עוסקת במחקר בתחום הפריון ושימור
+            הפוריות, מרצה בכנסים ומדריכה סטודנטים ומתמחים.
+          </p>
+          <div
+            class="relative about-img radius-1 shadow-30 mt-2 -ms-4 -mb-4 overflow-hidden m_mb-2"
+          >
+            <img src="@/assets/about.jpg" alt="אודות" class="about-img" />
+          </div>
+        </div>
+        <!-- Timeline -->
+        <div class="display-flex column gap-1">
+          <div v-for="item in timeline" :key="item.years" class="f">
+            <p class="txt-30 light color-orange line-height-12">{{ item.years }}</p>
+            <p class="line-height-15">{{ item.text }}</p>
+          </div>
+        </div>
+      </Card>
+      <div class="absolute start end top-0 w-100p h-80p -z-1 bg-white"></div>
+    </section>
+
     <!-- ======= MEDIA ======= -->
     <section id="media" class="py-4 px-05 bg-bg">
       <div class="w-1170px">
-        <p class="color-green-100 txt-14 mb-05">נוכחות תקשורתית</p>
-        <h2 class="txt-36 semi m-0 mb-3 m_txt-28">מהתקשורת</h2>
-        <div class="media-grid">
+        <h3 class="txt-36 semi m-0 mb-3 m_txt-28 txt-end">בתקשורת</h3>
+        <div class="grid grid-wrap-4 gap-1 m_grid-wrap-2">
           <a
-            v-for="item in media"
+            v-for="item in visibleMedia"
             :key="item._id"
-            :href="item.link"
+            :href="item.link || '#'"
             target="_blank"
             rel="noopener noreferrer"
-            class="media-card decoration-none"
+            class="decoration-none"
           >
-            <div v-if="item.image?.[0]?.imageURL" class="media-img-wrap">
-              <img
-                :src="item.image[0].imageURL"
-                :alt="item.image[0].altText || item.name"
-                class="w-100p h-100p cover"
-              />
-            </div>
-            <div v-else class="media-img-placeholder flex align-center justify-content-center">
-              <span class="txt-30">📺</span>
-            </div>
-            <div class="p-1">
-              <p class="bold txt-16 mb-025">{{ item.name }}</p>
-              <p v-if="item.date" class="txt-12 color-black-tint">{{ formatDate(item.date) }}</p>
-            </div>
+            <Card class="p-0 overflow-hidden h-100p flex column">
+              <!-- Main image -->
+              <div class="relative overflow-hidden" style="height: 160px">
+                <img
+                  v-if="item.image?.imageURL"
+                  :src="item.image.imageURL"
+                  :alt="item.image.altText || item.name"
+                  class="w-100p h-100p cover"
+                />
+                <div v-else class="w-100p h-100p bg-bg flex align-center justify-content-center">
+                  <span class="txt-40">📰</span>
+                </div>
+              </div>
+              <!-- Logo + content -->
+              <div class="p-1 flex column gap-05 flex-1">
+                <img
+                  v-if="item.logo?.imageURL"
+                  :src="item.logo.imageURL"
+                  :alt="item.name"
+                  class="h-30px"
+                  style="object-fit: contain; object-position: right"
+                />
+                <p v-else class="bold txt-14 m-0">{{ item.name }}</p>
+                <p class="txt-13 color-black-tint line-height-15 flex-1 m-0">{{ item.name }}</p>
+                <p v-if="item.date || item._createdDate" class="txt-12 color-black-tint m-0">
+                  {{ formatDate(item.date || item._createdDate) }}
+                </p>
+              </div>
+            </Card>
           </a>
+        </div>
+        <div v-if="media.length > mediaLimit" class="flex justify-content-center mt-2">
+          <Btn class="bg-orange color-black" value="הצגת עוד" @click="mediaLimit += 8" />
         </div>
       </div>
     </section>
 
     <!-- ======= ARTICLES ======= -->
-    <section id="articles" class="py-4 px-05">
+    <section id="articles" class="py-4 px-05 bg-bg">
       <div class="w-1170px">
-        <p class="color-green-100 txt-14 mb-05">פרסומים מדעיים</p>
-        <h2 class="txt-36 semi m-0 mb-3 m_txt-28">מאמרים רפואיים</h2>
-        <div class="articles-list">
+        <h2 class="txt-36 semi m-0 mb-3 m_txt-28 txt-end">מאמרים רפואיים</h2>
+        <div class="grid grid-wrap-6 gap-1 m_grid-wrap-2">
           <a
-            v-for="article in articles"
+            v-for="article in visibleArticles"
             :key="article._id"
-            :href="article.link"
+            :href="article.link || '#'"
             target="_blank"
             rel="noopener noreferrer"
-            class="article-row decoration-none flex align-center gap-1"
+            class="decoration-none"
           >
-            <div class="article-dot bg-orange radius-full flex-shrink-0"></div>
-            <div class="flex-1">
-              <p class="txt-16 bold mb-025 color-black">{{ article.name }}</p>
-              <p v-if="article.date || article._createdDate" class="txt-12 color-black-tint">
+            <Card class="h-100p flex column gap-05 p-1">
+              <p v-if="article.date || article._createdDate" class="txt-12 color-black-tint m-0">
                 {{ formatDate(article.date || article._createdDate) }}
               </p>
-            </div>
-            <span class="txt-20 color-black-tint">←</span>
+              <p class="txt-14 bold color-black line-height-15 flex-1 m-0">{{ article.name }}</p>
+            </Card>
           </a>
+        </div>
+        <div v-if="articles.length > articlesLimit" class="flex justify-content-center mt-2">
+          <Btn class="bg-orange color-black" value="הצגת עוד" @click="articlesLimit += 12" />
         </div>
       </div>
     </section>

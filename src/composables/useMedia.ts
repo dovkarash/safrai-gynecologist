@@ -4,13 +4,15 @@ import { useBagelDB } from '@/plugin/bagelDB'
 export interface MediaImage {
   imageURL: string
   altText?: string
+  imageName?: string
+  extension?: string
 }
 
 export interface MediaItem {
   _id: string
   name: string
-  image: MediaImage[]
-  logo: MediaImage[]
+  image: MediaImage
+  logo: MediaImage
   date?: string
   link: string
   _createdDate?: string
