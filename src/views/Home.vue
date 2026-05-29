@@ -82,7 +82,7 @@ onMounted(() => {
         <div class="m_txt-center">
           <p class="color-green-100 opacity-6">{{ content.hero.tagline }}</p>
           <h1 class="txt80 line-height-13 m-0 semi m_txt-44">{{ content.hero.title }}</h1>
-          <h2 class="txt-20 regular w480px m-0">{{ content.hero.subtitle }}</h2>
+          <h2 class="txt-20 regular w480px m-0 balance">{{ content.hero.subtitle }}</h2>
           <div class="flex gap-1 mt-3 m_justify-content-center m_mt-1">
             <Btn
               class="bg-orange color-black min-w150px shadow-10"
@@ -124,7 +124,8 @@ onMounted(() => {
 
     <!-- ======= SERVICES ======= -->
     <section id="services" class="bg-white py-3 m_pt-0 m_pb-1">
-      <div class="grid grid-wrap-200 m_grid-wrap-150 m_gap-05 txt-center w-1170px gap-1 m_px-1">
+      <h2 class="txt-30 regular m-0 mb-1 txt-center">{{ content.services.title }}</h2>
+      <div class="grid grid-wrap-200 m_grid-wrap-2 m_gap-05 txt-center w-1170px gap-1 m_px-1">
         <div
           v-for="service in services"
           :key="service._id"

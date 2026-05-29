@@ -30,6 +30,10 @@ export const homeContent = {
     },
   },
 
+  services: {
+    title: 'רשימת שרותים',
+  },
+
   about: {
     eyebrow: 'נעים להכיר',
     title: 'רופאת נשים שמחברת מקצועיות, רגישות ובהירות',
