@@ -80,7 +80,7 @@ onMounted(() => {
         class="w-1170px grid grid-wrap-2 align-items-center relative z-5 gap-2 m_flex m_column-reverse"
       >
         <div class="m_txt-center">
-          <p class="color-green-100 opacity-6">{{ content.hero.tagline }}</p>
+          <!-- <p class="color-green-100 opacity-6">{{ content.hero.tagline }}</p> -->
           <h1 class="txt80 line-height-13 m-0 semi m_txt-44">{{ content.hero.title }}</h1>
           <h2 class="txt-20 regular w480px m-0 balance">{{ content.hero.subtitle }}</h2>
           <div class="flex gap-1 mt-3 m_justify-content-center m_mt-1">
