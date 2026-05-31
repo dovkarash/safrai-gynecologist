@@ -348,7 +348,7 @@ onMounted(() => {
             <div class="flex gap-1">
               <div v-if="success" class="flex gap-1 column w-100p py-3">
                 <Icon name="check" class="color-green line-height-1" size="3" />
-                <p class="color-black">{{ content.contact.form.success }}</p>
+                <p class="">{{ content.contact.form.success }}</p>
               </div>
               <p
                 v-if="error"
