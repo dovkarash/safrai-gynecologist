@@ -302,39 +302,22 @@ onMounted(() => {
           />
           <div>
             <form v-if="!success" class="grid grid-wrap-2 gap-col-1" @submit.prevent="handleSubmit">
-              <template v-for="field in content.contact.form.fields" :key="field.key">
-                <TextInput
-                  v-if="field.type === 'text'"
-                  v-model="form[field.key]"
-                  :label="field.label"
-                  :placeholder="field.placeholder"
-                  :required="field.required"
-                />
-                <EmailInput
-                  v-else-if="field.type === 'email'"
-                  v-model="form.email"
-                  type="email"
-                  :label="field.label"
-                  :placeholder="field.placeholder"
-                  :required="field.required"
-                />
-                <TelInput
-                  v-else-if="field.type === 'tel'"
-                  v-model="form.phone"
-                  type="tel"
-                  :label="field.label"
-                  :placeholder="field.placeholder"
-                  :required="field.required"
-                />
-                <TextInput
-                  v-else-if="field.type === 'textarea'"
-                  v-model="form.message"
-                  multiline
-                  :label="field.label"
-                  :placeholder="field.placeholder"
-                  class="grid-span-2 m_grid-span-1"
-                />
-              </template>
+              <TextInput v-model="form.firstName" label="שם פרטי" placeholder="ישראל" required />
+              <TextInput v-model="form.lastName" label="שם משפחה" placeholder="ישראלי" required />
+              <EmailInput
+                v-model="form.email"
+                label="אימייל"
+                placeholder="israel@example.com"
+                required
+              />
+              <TelInput v-model="form.phone" label="טלפון" placeholder="050-0000000" />
+              <TextInput
+                v-model="form.message"
+                multiline
+                label="הודעה"
+                placeholder="כתבו את הודעתכם כאן..."
+                class="grid-span-2 m_grid-span-1"
+              />
               <div class="flex justify-content-end grid-span-2 m_grid-span-1">
                 <Btn
                   type="submit"
@@ -348,7 +331,7 @@ onMounted(() => {
             <div class="flex gap-1">
               <div v-if="success" class="flex gap-1 column w-100p py-3">
                 <Icon name="check" class="color-green line-height-1" size="3" />
-                <p class="">{{ content.contact.form.success }}</p>
+                <p class="color-white">{{ content.contact.form.success }}</p>
               </div>
               <p
                 v-if="error"
