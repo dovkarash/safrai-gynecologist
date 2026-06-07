@@ -7,6 +7,7 @@ export interface Article {
   link: string
   date?: string
   _createdDate?: string
+  draft?: boolean
 }
 
 function getEffectiveDate(item: Article): number {
@@ -25,7 +26,7 @@ export function useArticles() {
     error.value = null
     try {
       const res = await bagel.collection('articles').everything().get()
-      const items: Article[] = res.data
+      const items: Article[] = res.data.filter((a: Article) => !a.draft)
       articles.value = items.sort((a, b) => getEffectiveDate(b) - getEffectiveDate(a))
     } catch (e: unknown) {
       error.value = (e as Error)?.message ?? 'Failed to fetch articles'

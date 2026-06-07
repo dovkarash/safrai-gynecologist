@@ -13,6 +13,7 @@ export interface Service {
   name: string
   image: ServiceImage
   body: string
+  draft?: boolean
 }
 
 export function useServices() {
@@ -26,7 +27,7 @@ export function useServices() {
     error.value = null
     try {
       const res = await bagel.collection('services').everything().get()
-      services.value = res.data
+      services.value = res.data.filter((s: Service) => !s.draft)
     } catch (e: unknown) {
       error.value = (e as Error)?.message ?? 'Failed to fetch services'
     } finally {

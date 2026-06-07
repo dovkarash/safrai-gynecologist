@@ -8,8 +8,8 @@ const { openBooking } = useBooking()
 
 const navLinks = [
   { label: 'שירותי המרפאה', href: '#services' },
-  { label: 'אודות', href: '#about' },
   { label: 'מהתקשורת', href: '#media' },
+  { label: 'אודות', href: '#about' },
   { label: 'מאמרים רפואיים', href: '#articles' },
   { label: 'צור קשר', href: '#contact' },
 ]

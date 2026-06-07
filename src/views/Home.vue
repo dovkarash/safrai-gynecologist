@@ -167,33 +167,6 @@ onMounted(() => {
       </div>
     </section>
 
-    <!-- ======= ABOUT ======= -->
-    <section id="about" class="relative py-3 m_pt-0 m_pb-1">
-      <Card
-        class="w-1170px bg-orange-100 display-flex gap-2 color-white radius-2 m_block m_radius-1"
-      >
-        <div class="">
-          <p class="color-orange">{{ content.about.eyebrow }}</p>
-          <h2 class="txt-30 regular mt-05 mb-1 line-height-13">{{ content.about.title }}</h2>
-          <p v-for="(paragraph, index) in content.about.paragraphs" :key="index">
-            {{ paragraph }}
-          </p>
-          <div
-            class="relative about-img radius-1 shadow-30 mt-2 -ms-4 -mb-4 overflow-hidden m_mb-2"
-          >
-            <img src="@/assets/about.jpg" :alt="content.about.imageAlt" class="about-img" />
-          </div>
-        </div>
-        <div class="display-flex column gap-1">
-          <div v-for="item in content.about.timeline" :key="item.years" class="f">
-            <p class="txt-30 light color-orange line-height-12">{{ item.years }}</p>
-            <p class="line-height-15">{{ item.text }}</p>
-          </div>
-        </div>
-      </Card>
-      <div class="absolute start end top-0 w-100p h-80p -z-1 bg-white"></div>
-    </section>
-
     <!-- ======= MEDIA ======= -->
     <section id="media" class="py-4 m_py-1 px-05 bg-bg">
       <div class="w-1170px">
@@ -240,6 +213,32 @@ onMounted(() => {
           />
         </div>
       </div>
+    </section>
+
+    <!-- ======= ABOUT ======= -->
+    <section id="about" class="relative py-3 m_pt-0 m_pb-1">
+      <Card
+        class="w-1170px bg-orange-100 display-flex gap-2 color-white radius-2 m_block m_radius-1"
+      >
+        <div class="">
+          <p class="color-orange">{{ content.about.eyebrow }}</p>
+          <h2 class="txt-30 regular mt-05 mb-1 line-height-13">{{ content.about.title }}</h2>
+
+          <div v-html="content.about.paragraphs"></div>
+          <div
+            class="relative about-img radius-1 shadow-30 mt-2 -ms-4 -mb-4 overflow-hidden m_mb-2"
+          >
+            <img src="@/assets/about.jpg" :alt="content.about.imageAlt" class="about-img" />
+          </div>
+        </div>
+        <div class="display-flex column gap-1">
+          <div v-for="item in content.about.timeline" :key="item.years" class="f">
+            <p class="txt-30 light color-orange line-height-12">{{ item.years }}</p>
+            <p class="line-height-15">{{ item.text }}</p>
+          </div>
+        </div>
+      </Card>
+      <!-- <div class="absolute start end top-0 w-100p h-80p -z-1 bg-white"></div> -->
     </section>
 
     <!-- ======= ARTICLES ======= -->
