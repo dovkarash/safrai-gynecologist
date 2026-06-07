@@ -377,5 +377,8 @@ onMounted(() => {
     height: 500px;
     border-radius: var(--btn-border-radius);
   }
+  .m_place-items-center {
+    place-items: center !important;
+  }
 }
 </style>

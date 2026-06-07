@@ -21,6 +21,7 @@ export default defineConfig({
   plugins,
   build: {
     sourcemap: true, // Source map generation must be turned on for Sentry to work
+    cssMinify: 'esbuild', // lightningcss chokes on invalid !important from bagelink CSS
   },
   resolve: {
     alias: {
