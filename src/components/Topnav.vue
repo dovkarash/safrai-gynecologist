@@ -1,10 +1,8 @@
 <script lang="ts" setup>
 import { Btn } from '@bagelink/vue'
 import { ref } from 'vue'
-import { useBooking } from '@/composables/useBooking'
 
 const openMobileMenu = ref(false)
-const { openBooking } = useBooking()
 
 const navLinks = [
   { label: 'שירותי המרפאה', href: '#services' },
@@ -80,7 +78,12 @@ function scrollTo(href: string) {
       </div>
 
       <!-- CTA button -->
-      <Btn class="m_px-1 bg-orange color-black" value="קביעת תור" @click="openBooking" />
+      <a
+        class="m_px-1 bg-orange color-black decoration-none px-1 py-025 radius-1 bold txt20"
+        href="tel:0547362348"
+        >054-7362348</a
+      >
+      <!-- <Btn class="m_px-1 bg-orange color-black" value="קביעת תור" @click="openBooking" /> -->
     </div>
   </div>
 </template>

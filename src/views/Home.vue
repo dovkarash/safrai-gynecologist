@@ -4,7 +4,6 @@ import { computed, onMounted, ref } from 'vue'
 import { useArticles } from '@/composables/useArticles'
 import { useMedia } from '@/composables/useMedia'
 import { useContact, type ContactForm } from '@/composables/useContact'
-import { useBooking } from '@/composables/useBooking'
 import Topnav from '@/components/Topnav.vue'
 import { useServices, type Service } from '@/composables/useServices'
 import { homeContent } from '@/data/homeContent'
@@ -15,9 +14,9 @@ const { articles, fetchArticles } = useArticles()
 const { media, fetchMedia } = useMedia()
 const { services, fetchServices } = useServices()
 const { submitting, success, error, submitContact } = useContact()
-const { openBooking } = useBooking()
 
 const selectedService = ref<Service | null>(null)
+const lightboxImage = ref<string | null>(null)
 
 const mediaLimit = ref(content.media.loadMoreStep)
 const articlesLimit = ref(content.articles.loadMoreStep)
@@ -84,11 +83,6 @@ onMounted(() => {
           <h1 class="txt80 line-height-13 m-0 semi m_txt-44">{{ content.hero.title }}</h1>
           <h2 class="txt-20 regular w480px m-0 balance">{{ content.hero.subtitle }}</h2>
           <div class="flex gap-1 mt-3 m_justify-content-center m_mt-1">
-            <Btn
-              class="bg-orange color-black min-w150px shadow-10"
-              :value="content.hero.cta.book"
-              @click="openBooking"
-            />
             <Btn
               class="bg-white color-black min-w150px border shadow-10"
               :value="content.hero.cta.more"
@@ -175,10 +169,14 @@ onMounted(() => {
           <Card
             v-for="item in visibleMedia"
             :key="item._id"
-            :href="item.link || '#'"
-            target="_blank"
-            rel="noopener noreferrer"
+            :href="item.link || undefined"
+            :target="item.link ? '_blank' : undefined"
+            :rel="item.link ? 'noopener noreferrer' : undefined"
             class="p-0 overflow-hidden hover decoration-none border bg-white"
+            :class="{ 'cursor-pointer': !item.link }"
+            @click="
+              !item.link && item.image?.imageURL ? (lightboxImage = item.image.imageURL) : null
+            "
           >
             <div class="relative border-bottom h-150px">
               <img
@@ -205,6 +203,10 @@ onMounted(() => {
             </div>
           </Card>
         </div>
+        <!-- Lightbox modal for media without link -->
+        <Modal :visible="!!lightboxImage" @update:visible="lightboxImage = null">
+          <img v-if="lightboxImage" :src="lightboxImage" alt="" class="w-100p radius-1" />
+        </Modal>
         <div v-if="media.length > mediaLimit" class="flex justify-content-center mt-2">
           <Btn
             class="bg-orange color-black"
@@ -252,12 +254,12 @@ onMounted(() => {
             :href="article.link || '#'"
             target="_blank"
             rel="noopener noreferrer"
-            class="h-100p display-flex column gap-05 p-1 hover decoration-none border bg-white h-150px"
+            class="h-100p display-flex column gap-05 p-1 hover decoration-none border bg-white"
           >
             <p v-if="article.date || article._createdDate" class="txt-12 opacity-5">
               {{ formatDate(article.date || article._createdDate) }}
             </p>
-            <p class="ellipsis-4">{{ article.name }}</p>
+            <p class="ellipsis-5 line-height-15">{{ article.name }}</p>
           </Card>
         </div>
         <div v-if="articles.length > articlesLimit" class="flex justify-content-center mt-2">
@@ -366,6 +368,9 @@ onMounted(() => {
 }
 .grayscale {
   filter: grayscale(1);
+}
+.cursor-pointer {
+  cursor: pointer;
 }
 
 .contact-map {
