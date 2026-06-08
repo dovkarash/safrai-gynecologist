@@ -19,11 +19,6 @@ export interface MediaItem {
   draft?: boolean
 }
 
-function getEffectiveDate(item: MediaItem): number {
-  const d = item.date || item._createdDate
-  return d ? new Date(d).getTime() : 0
-}
-
 export function useMedia() {
   const bagel = useBagelDB()
   const media = ref<MediaItem[]>([])
@@ -35,8 +30,7 @@ export function useMedia() {
     error.value = null
     try {
       const res = await bagel.collection('media').everything().get()
-      const items: MediaItem[] = res.data.filter((m: MediaItem) => !m.draft)
-      media.value = items.sort((a, b) => getEffectiveDate(b) - getEffectiveDate(a))
+      media.value = res.data.filter((m: MediaItem) => !m.draft)
     } catch (e: unknown) {
       error.value = (e as Error)?.message ?? 'Failed to fetch media'
     } finally {
