@@ -79,7 +79,7 @@ onMounted(() => {
         class="w-1170px grid grid-wrap-2 align-items-center relative z-5 gap-2 m_flex m_column-reverse"
       >
         <div class="m_txt-center">
-          <!-- <p class="color-green-100 opacity-6">{{ content.hero.tagline }}</p> -->
+          <p class="color-green-100 opacity-6">{{ content.hero.tagline }}</p>
           <h1 class="txt80 line-height-13 m-0 semi m_txt-44">{{ content.hero.title }}</h1>
           <h2 class="txt-20 regular w480px m-0 balance">{{ content.hero.subtitle }}</h2>
           <div class="flex gap-1 mt-3 m_justify-content-center m_mt-1">
@@ -87,7 +87,7 @@ onMounted(() => {
               class="bg-white color-black min-w150px border shadow-10"
               :value="content.hero.cta.more"
               flat
-              :href="content.hero.cta.moreHref"
+              href="#contact"
             />
           </div>
         </div>
@@ -247,7 +247,7 @@ onMounted(() => {
     <section id="articles" class="py-4 m_py-1 px-05 bg-bg">
       <div class="w-1170px">
         <h3 class="txt-30 regular m-0 pb-1">{{ content.articles.title }}</h3>
-        <div class="grid grid-wrap-6 gap-1 m_grid-wrap-2">
+        <div class="grid grid-wrap-6 gap-1 m_grid-wrap-1">
           <Card
             v-for="article in visibleArticles"
             :key="article._id"
@@ -275,14 +275,22 @@ onMounted(() => {
     <!-- ======= CONTACT ======= -->
     <section id="contact" class="mt-5 m_mt-1 px-05 bg-green-100 color-white m_py-1">
       <div class="w-1170px grid grid-wrap-2 gap-3 m_gap-1 align-items-start m_grid-wrap-1">
-        <div class="py-3 m_py-1">
+        <div class="py-3 m_py-1 m_txt-center">
           <p class="txt-14 color-orange">{{ content.contact.eyebrow }}</p>
           <h2 class="txt-30 regular m-0 mb-1">{{ content.contact.title }}</h2>
-          <p class="txt-16 pb-1">
+          <p class="txt-16 pb-1 balance">
             {{ content.contact.intro }}
             <br />
             {{ content.contact.phoneLabel }} {{ content.contact.phone }} |
-            {{ content.contact.hoursLabel }} {{ content.contact.hours }} |
+            {{ content.contact.hoursLabel }} {{ content.contact.hours }}
+            <span class="m_none">|</span>
+            <span class="m_block">
+              {{ content.contact.emailLabel }}
+              <a :href="`mailto:${content.contact.email}`" class="color-white">{{
+                content.contact.email
+              }}</a>
+              <span class="m_none">|</span>
+            </span>
             {{ content.contact.addressLabel }}
             <a :href="mapLinkUrl" target="_blank" rel="noopener noreferrer" class="color-white">{{
               content.contact.address

@@ -79,7 +79,7 @@ function scrollTo(href: string) {
 
       <!-- CTA button -->
       <a
-        class="m_px-1 bg-orange color-black decoration-none px-1 py-025 radius-1 bold txt20"
+        class="m_px-1 bg-orange color-black decoration-none px-1 py-025 radius-1 bold txt20 white-space m_txt-16"
         href="tel:0547362348"
         >054-7362348</a
       >

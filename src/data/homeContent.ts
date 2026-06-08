@@ -19,9 +19,9 @@ export type ContactFormField = {
 
 export const homeContent = {
   hero: {
-    tagline: 'רפואת נשים בגישה אישית ומקצועית',
+    tagline: 'בריאות האישה ופוריות בהתאמה אישית לאורך שלבי החיים',
     title: 'ד״ר מרים ספראי',
-    subtitle: 'בריאות האישה ופוריות בהתאמה אישית לאורך שלבי החיים',
+    subtitle: 'מומחית למיילדות גינקולוגיה ופוריות',
     imageAlt: 'ד״ר מרים ספראי',
     cta: {
       book: 'קביעת תור',
@@ -89,6 +89,8 @@ export const homeContent = {
     phone: '054-7362348',
     hoursLabel: 'זמני קבלה:',
     hours: 'ימי שני 15:00–19:00',
+    emailLabel: 'מייל:',
+    email: 'Dr.safrai.clinic@gmail.com',
     addressLabel: 'כתובת:',
     address: 'רחוב הברזל 9א׳, קומה 2, רמת החייל, תל-אביב',
     location: { lat: 32.1093, lng: 34.8372 },
