@@ -79,9 +79,20 @@ onMounted(() => {
         class="w-1170px grid grid-wrap-2 align-items-center relative z-5 gap-2 m_flex m_column-reverse"
       >
         <div class="m_txt-center">
-          <p class="color-green-100 opacity-6">{{ content.hero.tagline }}</p>
-          <h1 class="txt80 line-height-13 m-0 semi m_txt-44">{{ content.hero.title }}</h1>
-          <h2 class="txt-20 regular w480px m-0 balance">{{ content.hero.subtitle }}</h2>
+          <p class="color-green-100 txt-20 opacity-6 balance">{{ content.hero.tagline }}</p>
+          <h1 class="txt80 line-height-13 pb-1 m-0 semi m_txt-44">{{ content.hero.title }}</h1>
+          <h2 class="txt-24 regular w480px m-0 balance line-height-13 m_txt-20">
+            {{ content.hero.subtitle }}
+          </h2>
+
+          <div class="flex gap-05 mt-1 m_justify-content-center txt-20">
+            <span class="flex align-items-center gap-025 opacity-7">🇮🇱 עברית</span>
+            <span class="opacity-3">|</span>
+            <span class="flex align-items-center gap-025 opacity-7">🇬🇧 English</span>
+            <span class="opacity-3">|</span>
+            <span class="flex align-items-center gap-025 opacity-7">🇫🇷 Français</span>
+          </div>
+
           <div class="flex gap-1 mt-3 m_justify-content-center m_mt-1">
             <Btn
               class="bg-white color-black min-w150px border shadow-10"
