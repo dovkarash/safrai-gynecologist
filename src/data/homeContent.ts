@@ -122,12 +122,12 @@ export const homeContent = {
       {
         icon: 'facebook',
         tooltip: 'פייסבוק',
-        href: 'https://www.facebook.com/profile.php?id=100063543434343',
+        href: 'https://www.facebook.com/myriam.safrai',
       },
       {
         icon: 'instagram',
-        tooltip: 'אימסטגרם',
-        href: 'https://www.instagram.com/profile.php?id=100063543434343',
+        tooltip: 'אינסטגרם',
+        href: 'https://www.instagram.com/dr.myriamsafrai/',
       },
     ] satisfies SocialLink[],
   },
