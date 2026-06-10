@@ -11,10 +11,10 @@
   --bgl-black-tint: #33333380;
   --bgl-bg: #f5f5f5;
   --bgl-orange: #eec2a0;
-  --input-bg: #ffffff30;
-  --input-color: #ffffff;
-  --label-color: #ffffff90;
-  --placeholder-color: #ffffff80;
+  --bgl-input-bg: #ffffff30;
+  --bgl-input-color: #ffffff;
+  --bgl-label-color: #ffffff90;
+  --bgl-placeholder-color: #ffffff80;
 
   /* --bgl-primary: #2e5bff; */
   /* --bgl-primary-tint: #2e5bff80; */
@@ -29,12 +29,12 @@
   /* --bgl-accent-color: var(--bgl-primary); */
   /* --bgl-bg: #f4f6fa; */
   /* --bgl-shadow: #4c577d26; */
-  /* --border-color: #00000020; */
-  /* --placeholder-color: #00000040; */
-  /* --label-color: #00000080; */
-  /* --dropdown-color: var(--bgl-black); */
-  /* --input-bg: #f5f8fa; */
-  /* --input-color: #000000; */
+  /* --bgl-border-color: #00000020; */
+  /* --bgl-placeholder-color: #00000040; */
+  /* --bgl-label-color: #00000080; */
+  /* --bgl-dropdown-color: var(--bgl-black); */
+  /* --bgl-input-bg: #f5f8fa; */
+  /* --bgl-input-color: #000000; */
   /* --bgl-box-bg: var(--bgl-white); */
   /* --bgl-popup-bg: var(--bgl-white); */
   /* --bgl-popup-text: var(--bgl-black); */
@@ -47,35 +47,35 @@
   /* --bgl-selection-bg: var(--bgl-blue-dark); */
   /* --bgl-selection-color: var(--bgl-white); */
   /* --bgl-scrollbar-thumb: var(--bgl-gray); */
-  /* --pill-btn-color: var(--bgl-white); */
-  /* --pill-btn-bg: var(--placeholder-color) */
+  /* --bgl-pill-btn-color: var(--bgl-white); */
+  /* --bgl-pill-btn-bg: var(--bgl-placeholder-color) */
   /* --bgl-selected: var(--bgl-gray-light); */
-  /* --skeleton-bg: #f0f0f0; */
-  /* --skeleton-pulse: var(--bgl-bg); */
+  /* --bgl-skeleton-bg: #f0f0f0; */
+  /* --bgl-skeleton-pulse: var(--bgl-bg); */
   /* --bgl-range-thumb-color: var(--bgl-white); */
 }
 
 /* TYPE */
 :root {
   --bgl-font: 'Assistant', sans-serif;
-  --input-font-size: 16px;
+  --bgl-input-font-size: 16px;
 }
 
 /* DIMENSIONS */
 :root {
   /* --bgl-font-size: 16px; */
-  --input-height: 45px;
-  /* --label-font-size: 12px; */
-  /* --pill-font-size: 12px; */
-  --input-border-radius: 12px;
-  --card-border-radius: 12px;
-  --btn-border-radius: 24px;
-  /* --btn-padding: 30px; */
-  --btn-height: 45px;
-  /* --pill-border-radius: 8px; */
-  /* --pill-height: 20px; */
-  /* --skeleton-radius: 0.25rem; */
-  /* --skeleton-margin: 1rem; */
+  --bgl-input-height: 45px;
+  /* --bgl-label-font-size: 12px; */
+  /* --bgl-pill-font-size: 12px; */
+  --bgl-input-border-radius: 12px;
+  --bgl-card-border-radius: 12px;
+  --bgl-btn-border-radius: 24px;
+  /* --bgl-btn-padding: 30px; */
+  --bgl-btn-height: 45px;
+  /* --bgl-pill-border-radius: 8px; */
+  /* --bgl-pill-height: 20px; */
+  /* --bgl-skeleton-radius: 0.25rem; */
+  /* --bgl-skeleton-margin: 1rem; */
   /* --bgl-range-thumb-size: 20px; */
   /* --bgl-range-track-height: 8px; */
   /* --bgl-scrollbar-size: 0.5rem; */

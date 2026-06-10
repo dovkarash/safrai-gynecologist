@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Btn, Card, EmailInput, Icon, MapEmbed, Modal, TelInput, TextInput } from '@bagelink/vue'
+import { Btn, Card, Dialog, EmailInput, Icon, MapEmbed, TelInput, TextInput } from '@bagelink/vue'
 import { computed, onMounted, ref } from 'vue'
 import { useArticles } from '@/composables/useArticles'
 import { useMedia } from '@/composables/useMedia'
@@ -151,10 +151,11 @@ onMounted(() => {
         </div>
       </div>
       <div class="w-1170px">
-        <Modal
-          :visible="!!selectedService"
+        <Dialog
+          :open="!!selectedService"
           :title="selectedService?.name"
-          @update:visible="selectedService = null"
+          ellipsis-title
+          @update:open="selectedService = null"
         >
           <div v-if="selectedService" class="flex gap-1 align-items-start m_block m_txt-center">
             <img
@@ -168,7 +169,7 @@ onMounted(() => {
               v-html="selectedService.body"
             ></div>
           </div>
-        </Modal>
+        </Dialog>
       </div>
     </section>
 
@@ -215,9 +216,9 @@ onMounted(() => {
           </Card>
         </div>
         <!-- Lightbox modal for media without link -->
-        <Modal :visible="!!lightboxImage" @update:visible="lightboxImage = null">
+        <Dialog :open="!!lightboxImage" @update:open="lightboxImage = null">
           <img v-if="lightboxImage" :src="lightboxImage" alt="" class="w-100p radius-1" />
-        </Modal>
+        </Dialog>
         <div v-if="media.length > mediaLimit" class="flex justify-content-center mt-2">
           <Btn
             class="bg-orange color-black"
@@ -399,7 +400,7 @@ onMounted(() => {
 @media (max-width: 910px) {
   .contact-map {
     height: 500px;
-    border-radius: var(--btn-border-radius);
+    border-radius: var(--bgl-btn-border-radius);
   }
   .m_place-items-center {
     place-items: center !important;

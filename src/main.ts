@@ -1,4 +1,4 @@
-import { BagelVue, RouterWrapper, type BagelOptions } from '@bagelink/vue'
+import { BagelVue, DialogPlugin, RouterWrapper, type BagelOptions } from '@bagelink/vue'
 import { createPinia } from 'pinia'
 import { createApp, markRaw } from 'vue'
 
@@ -16,6 +16,7 @@ app.use(bagelDBPlugin)
 
 const bagelConfig: BagelOptions = {}
 app.use(BagelVue, bagelConfig)
+app.use(DialogPlugin)
 
 app.use(router)
 
