@@ -216,7 +216,7 @@ onMounted(() => {
           </Card>
         </div>
         <!-- Lightbox modal for media without link -->
-        <Dialog :open="!!lightboxImage" @update:open="lightboxImage = null">
+        <Dialog :open="!!lightboxImage" width="xl" @update:open="lightboxImage = null">
           <img v-if="lightboxImage" :src="lightboxImage" alt="" class="w-100p radius-1" />
         </Dialog>
         <div v-if="media.length > mediaLimit" class="flex justify-content-center mt-2">
