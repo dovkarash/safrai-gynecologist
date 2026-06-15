@@ -72,6 +72,23 @@ onMounted(() => {
 <template>
   <div class="testMe1">
     <Topnav />
+    <div class="fixed bottom-1 end-1 bg-white radius-1 z-9 p-1 w-300px txt-center border shadow">
+      <p class="bold">אין לך זמן או אפשרות להגיע למרפאה?</p>
+      <p>
+        חלק ניכר מהייעוצים והמעקבים ניתן לקיים מרחוק ובשעות הערב, כדי להשתלב טוב יותר בשגרת החיים.
+      </p>
+      <p>לא בטוחה אם הייעוץ מתאים לפגישה מרחוק? מוזמנת ליצור קשר ונשמח לכוון אותך.</p>
+      <div class="flex gap-05 justify-content-center pt-1">
+        <Btn size="xl" icon="whatsapp" class="" target="_blank" href="https://wa.me/0542141064" />
+        <Btn
+          size="xl"
+          icon="email"
+          class=""
+          target="_blank"
+          href="mailto:dr.myriamsafrai@gmail.com"
+        />
+      </div>
+    </div>
 
     <!-- ======= HERO ======= -->
     <section class="relative py-3 px-05">
@@ -363,7 +380,7 @@ onMounted(() => {
             </div>
           </div>
         </div>
-        <div class="contact-map -mt-3 shadow-30 m_mt-0 m_pointer-events-none">
+        <div class="contact-map -mt-3 shadow-30 m_mt-0 m_pointer-events-none z-0">
           <MapEmbed
             :center="mapCenter"
             :markers="mapMarkers"
