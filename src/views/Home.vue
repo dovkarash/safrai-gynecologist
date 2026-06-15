@@ -10,6 +10,8 @@ import { homeContent } from '@/data/homeContent'
 
 const content = homeContent
 
+const showWhatsappPopup = ref(true)
+
 const { articles, fetchArticles } = useArticles()
 const { media, fetchMedia } = useMedia()
 const { services, fetchServices } = useServices()
@@ -72,7 +74,15 @@ onMounted(() => {
 <template>
   <div class="testMe1">
     <Topnav />
-    <div class="fixed bottom-1 end-1 bg-white radius-1 z-9 p-1 w-300px txt-center border shadow">
+    <div
+      class="fixed bottom-1 end-1 bg-white radius-1 z-9 p-1 w-300px txt-center border shadow m_none hidePopup"
+      :class="{ showWhatsappPopup }"
+    >
+      <Btn
+        icon="close"
+        class="absolute -top-1 -start-1"
+        @click="showWhatsappPopup = !showWhatsappPopup"
+      />
       <p class="bold">אין לך זמן או אפשרות להגיע למרפאה?</p>
       <p>
         חלק ניכר מהייעוצים והמעקבים ניתן לקיים מרחוק ובשעות הערב, כדי להשתלב טוב יותר בשגרת החיים.
@@ -89,6 +99,12 @@ onMounted(() => {
         />
       </div>
     </div>
+    <Btn
+      icon="whatsapp"
+      class="none fixed bottom-1 end-1 z-99 txt-center border shadow m_block"
+      target="_blank"
+      href="https://wa.me/0542141064"
+    />
 
     <!-- ======= HERO ======= -->
     <section class="relative py-3 px-05">
@@ -412,6 +428,18 @@ onMounted(() => {
 .contact-map {
   width: 100%;
   overflow: hidden;
+}
+.hidePopup {
+  opacity: 0;
+  transform: translateX(-105%);
+  transition: all 0.3s ease-in-out;
+}
+.hidePopup.showWhatsappPopup {
+  opacity: 1;
+  transform: translateX(0);
+}
+.showWhatsappPopup {
+  display: block !important;
 }
 @media (max-width: 910px) {
   .contact-map {
