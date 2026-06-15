@@ -75,7 +75,7 @@ onMounted(() => {
   <div class="testMe1">
     <Topnav />
     <div
-      class="fixed bottom-1 end-1 bg-white radius-1 z-9 p-1 w-300px txt-center border shadow m_none hidePopup"
+      class="fixed bottom-1 end-1 bg-white radius-1 z-9 p-1 w-300px txt-center border shadow hidePopup m_none"
       :class="{ showWhatsappPopup }"
     >
       <Btn
@@ -443,9 +443,6 @@ onMounted(() => {
 .hidePopup.showWhatsappPopup {
   opacity: 1;
   transform: translateX(0);
-}
-.showWhatsappPopup {
-  display: block !important;
 }
 @media (max-width: 910px) {
   .contact-map {
