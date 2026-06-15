@@ -269,7 +269,6 @@ onMounted(() => {
           </div>
         </div>
       </Card>
-      <!-- <div class="absolute start end top-0 w-100p h-80p -z-1 bg-white"></div> -->
     </section>
 
     <!-- ======= ARTICLES ======= -->
