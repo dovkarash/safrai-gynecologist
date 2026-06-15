@@ -354,12 +354,11 @@ onMounted(() => {
             :href="link.href"
             target="_blank"
             rel="noopener noreferrer"
-            class="rotate-0 color-white"
+            class="rotate-0 color-white me-05 m_mx-05"
             flat
             icon-size="2.5"
-            size="l"
           />
-          <div>
+          <div class="mt-1">
             <form v-if="!success" class="grid grid-wrap-2 gap-col-1" @submit.prevent="handleSubmit">
               <TextInput v-model="form.firstName" label="שם פרטי" placeholder="ישראל" required />
               <TextInput v-model="form.lastName" label="שם משפחה" placeholder="ישראלי" required />
