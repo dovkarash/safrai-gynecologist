@@ -89,7 +89,13 @@ onMounted(() => {
       </p>
       <p>לא בטוחה אם הייעוץ מתאים לפגישה מרחוק? מוזמנת ליצור קשר ונשמח לכוון אותך.</p>
       <div class="flex gap-05 justify-content-center pt-1">
-        <Btn size="xl" icon="whatsapp" class="" target="_blank" href="https://wa.me/0542141064" />
+        <Btn
+          size="xl"
+          icon="whatsapp"
+          class=""
+          target="_blank"
+          href="https://wa.me/+972542141064"
+        />
         <Btn
           size="xl"
           icon="email"
@@ -103,7 +109,7 @@ onMounted(() => {
       icon="whatsapp"
       class="none fixed bottom-1 end-1 z-99 txt-center border shadow m_block"
       target="_blank"
-      href="https://wa.me/0542141064"
+      href="https://wa.me/+972542141064"
     />
 
     <!-- ======= HERO ======= -->
