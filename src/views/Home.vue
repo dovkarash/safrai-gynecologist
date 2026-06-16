@@ -105,6 +105,13 @@ onMounted(() => {
         />
       </div>
     </div>
+    <Btn
+      icon="whatsapp"
+      class="fixed bottom-1 end-1 z-99 txt-center border shadow whatsappBtn"
+      target="_blank"
+      href="https://wa.me/+972542141064"
+      :class="{ whatsappActive: !showWhatsappPopup }"
+    />
 
     <!-- ======= HERO ======= -->
     <section class="relative py-3 px-05">
@@ -436,6 +443,17 @@ onMounted(() => {
 .hidePopup.showWhatsappPopup {
   opacity: 1;
   transform: translateX(0);
+}
+.whatsappBtn {
+  opacity: 0;
+  transform: translateX(-105%) !important;
+  transition:
+    0.5s transform 0.3s ease-in-out,
+    1s opacity 0.3s ease-in-out !important;
+}
+.whatsappBtn.whatsappActive {
+  opacity: 1;
+  transform: translateX(0) !important;
 }
 @media (max-width: 910px) {
   .contact-map {
