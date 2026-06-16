@@ -86,7 +86,7 @@ export const homeContent = {
     title: 'צור קשר',
     intro: 'אפשר להשאיר פרטים ונחזור אלייך בהקדם, או ליצור קשר ישירות עם המרפאה.',
     phoneLabel: 'טלפון:',
-    phone: '054-2141064',
+    phone: '054-736-2348',
     hoursLabel: 'זמני קבלה:',
     hours: 'ימי שני 15:00–19:00',
     emailLabel: 'מייל:',

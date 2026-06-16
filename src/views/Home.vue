@@ -94,7 +94,7 @@ onMounted(() => {
           icon="whatsapp"
           class=""
           target="_blank"
-          href="https://wa.me/+972542141064"
+          href="https://wa.me/+972547362348"
         />
         <Btn
           size="xl"
@@ -109,7 +109,7 @@ onMounted(() => {
       icon="whatsapp"
       class="fixed bottom-1 end-1 z-99 txt-center border shadow whatsappBtn"
       target="_blank"
-      href="https://wa.me/+972542141064"
+      href="https://wa.me/+972547362348"
       :class="{ whatsappActive: !showWhatsappPopup }"
     />
 
