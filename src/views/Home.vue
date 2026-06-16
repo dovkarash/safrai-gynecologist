@@ -75,7 +75,7 @@ onMounted(() => {
   <div class="testMe1">
     <Topnav />
     <div
-      class="fixed bottom-1 end-1 bg-white radius-1 z-9 p-1 w-300px txt-center border shadow hidePopup m_none"
+      class="fixed bottom-1 end-1 bg-white radius-1 z-9 p-1 w-300px txt-center border shadow hidePopup"
       :class="{ showWhatsappPopup }"
     >
       <Btn
@@ -105,12 +105,6 @@ onMounted(() => {
         />
       </div>
     </div>
-    <Btn
-      icon="whatsapp"
-      class="none fixed bottom-1 end-1 z-99 txt-center border shadow m_block"
-      target="_blank"
-      href="https://wa.me/+972542141064"
-    />
 
     <!-- ======= HERO ======= -->
     <section class="relative py-3 px-05">
