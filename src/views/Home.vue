@@ -214,15 +214,15 @@ onMounted(() => {
     </section>
 
     <!-- ======= REVIEWS ======= -->
-    <div dir="rtl" class="w-1200px h-250px py-2">
+    <div dir="rtl" class="w-1200px h-300px py-2">
       <!-- <a href=https://www.medreviews.co.il/provider/dr-safrai-myriam target="_blank">לכל חוות הדעת על ד״ר מרים ספראי באתר MedReviews.co.il</a> -->
       <iframe
         frameborder="0"
         height="100%"
         width="100%"
         allowfullscreen
-        src="https://www.medreviews.co.il/provider/dr-safrai-myriam/reviews-widget?show-header=false&slide-switch-interval=4500&bg=ffffff&controls-color=&r-text-color=&date-color=&main-text=&only-favorite=&logo="
-        class="mix-blend-mode-multiply"
+        src="https://www.medreviews.co.il/provider/dr-safrai-myriam/reviews-widget?show-header=false&slide-switch-interval=4500&bg=f5f5f5&controls-color=846168&r-text-color=&date-color=&main-text=&only-favorite=&logo="
+        class="mix-blend-mode-multiply1"
       ></iframe>
     </div>
 
