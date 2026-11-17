@@ -214,7 +214,7 @@ onMounted(() => {
     </section>
 
     <!-- ======= REVIEWS ======= -->
-    <div dir="rtl" class="w-1200px h-300px py-2">
+    <div dir="rtl" class="w-1200px h-300px py-3">
       <!-- <a href=https://www.medreviews.co.il/provider/dr-safrai-myriam target="_blank">לכל חוות הדעת על ד״ר מרים ספראי באתר MedReviews.co.il</a> -->
       <iframe
         frameborder="0"
